@@ -2,6 +2,7 @@ import { FaHome } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa6";
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
+import { ToastContainer } from "react-toastify";
 
 const DashboardLayout = () => {
     const [role] = useRole();
@@ -20,6 +21,7 @@ const DashboardLayout = () => {
                 {/* Page content here */}
                 <div className="p-4">
                     <Outlet/>
+                    <ToastContainer/>
                 </div>
             </div>
 

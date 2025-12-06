@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const ManageDecorators = () => {
     const {user} = useAuth();
@@ -12,6 +13,25 @@ const ManageDecorators = () => {
             return result.data;
         }
     });
+
+    const handleMakeDecorator = id => {
+        const updatedRole = {
+            role: "decorator"
+        };
+        axiosSecure.patch(`/user/${id}/role`, updatedRole)
+            .then(res => {
+                if(res.data.modifiedCount){
+                    refetch();
+                    toast.success("Role updated");
+                }
+            });
+    }
+
+    if (isLoading) {
+        return <div className="min-h-screen flex justify-center items-center">
+            <span className="loading loading-bars w-12"></span>
+        </div>;
+    }
     return (
         <div className="space-y-4">
             <h2 className="text-4xl font-bold">Manage Decorators</h2>
@@ -48,7 +68,7 @@ const ManageDecorators = () => {
                             </td>
                             <td>{user.role}</td>
                             <th>
-                                <button className="btn btn-primary text-black">Make Decorator</button>
+                                <button onClick={() => handleMakeDecorator(user._id)} className="btn btn-primary text-black">Make Decorator</button>
                             </th>
                         </tr>)}
                     </tbody>
