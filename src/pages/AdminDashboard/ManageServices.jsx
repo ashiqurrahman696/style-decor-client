@@ -1,11 +1,12 @@
 import { FaPlus } from "react-icons/fa6";
+import { Link } from "react-router";
 
 const ManageServices = () => {
     return (
         <div className="space-y-4">
             <div className="flex justify-between items-center">
                 <h2 className="text-4xl font-bold">Manage Decoration Services</h2>
-                <button className="btn btn-primary text-white"><FaPlus />Add Service</button>
+                <Link to="/dashboard/add-service" className="btn btn-primary text-white"><FaPlus />Add Service</Link>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
