@@ -1,5 +1,6 @@
 import { FaHome } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa6";
+import { GiSofa } from "react-icons/gi";
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
 import { ToastContainer } from "react-toastify";
@@ -42,6 +43,12 @@ const DashboardLayout = () => {
                                 <Link to="/dashboard/manage-decorators" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Decorators">
                                     <FaUsers />
                                     <span className="is-drawer-close:hidden">Manage Decorators</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/manage-services" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="manage Services">
+                                    <GiSofa />
+                                    <span className="is-drawer-close:hidden">manage Services</span>
                                 </Link>
                             </li>
                         </>}

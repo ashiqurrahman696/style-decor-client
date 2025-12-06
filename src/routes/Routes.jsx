@@ -6,6 +6,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import ManageDecorators from "../pages/AdminDashboard/ManageDecorators";
 import AdminRoute from "./AdminRoute";
+import ManageServices from "../pages/AdminDashboard/ManageServices";
 
 export const router = createBrowserRouter([
     {
@@ -33,7 +34,13 @@ export const router = createBrowserRouter([
                 element: <AdminRoute>
                     <ManageDecorators/>
                 </AdminRoute>
-            }
+            },
+            {
+                path: "/dashboard/manage-services",
+                element: <AdminRoute>
+                    <ManageServices/>
+                </AdminRoute>
+            },
         ]
     }
 ]);
