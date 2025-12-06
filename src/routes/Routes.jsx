@@ -5,6 +5,7 @@ import Register from "../pages/Auth/Register";
 import DashboardLayout from "../layouts/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import ManageDecorators from "../pages/AdminDashboard/ManageDecorators";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -29,7 +30,9 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/dashboard/manage-decorators",
-                Component: ManageDecorators
+                element: <AdminRoute>
+                    <ManageDecorators/>
+                </AdminRoute>
             }
         ]
     }

@@ -1,8 +1,10 @@
 import { FaHome } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa6";
 import { Link, Outlet } from "react-router";
+import useRole from "../hooks/useRole";
 
 const DashboardLayout = () => {
+    const [role] = useRole();
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -33,12 +35,14 @@ const DashboardLayout = () => {
                                 <span className="is-drawer-close:hidden">Dashboard Home</span>
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/dashboard/manage-decorators" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Decorators">
-                                <FaUsers />
-                                <span className="is-drawer-close:hidden">Manage Decorators</span>
-                            </Link>
-                        </li>
+                        {role === "admin" && <>
+                            <li>
+                                <Link to="/dashboard/manage-decorators" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Decorators">
+                                    <FaUsers />
+                                    <span className="is-drawer-close:hidden">Manage Decorators</span>
+                                </Link>
+                            </li>
+                        </>}
                     </ul>
                 </div>
             </div>
