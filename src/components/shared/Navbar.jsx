@@ -1,9 +1,17 @@
 import { Link, NavLink } from "react-router";
 import logo from "../../assets/logo.png";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-    const {user} = useAuth();
+    const {user, setUser, signOutUser} = useAuth();
+    const handleSignOut = () => {
+        signOutUser().then(() => {
+            setUser(null);
+        }).catch((error) => {
+            toast.error(error.code);
+        });
+    }
     const links = <>
         <li>
             <NavLink to="/">Home</NavLink>
@@ -60,7 +68,7 @@ const Navbar = () => {
                     <div className="navbar-end gap-3">
                         {user ? <>
                             <img src={user.photoURL} className="size-10 rounded-full object-cover" />
-                            <button className="btn btn-primary text-black">Logout</button>
+                            <button onClick={handleSignOut} className="btn btn-primary text-black">Logout</button>
                         </> : <>
                             <Link to="/login" className="btn btn-primary text-black">Login</Link>
                             <Link to="/register" className="btn btn-secondary text-white">Register</Link>
