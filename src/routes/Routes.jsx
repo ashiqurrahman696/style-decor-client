@@ -4,6 +4,7 @@ import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import DashboardLayout from "../layouts/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
+import ManageDecorators from "../pages/AdminDashboard/ManageDecorators";
 
 export const router = createBrowserRouter([
     {
@@ -25,5 +26,11 @@ export const router = createBrowserRouter([
         element: <PrivateRoute>
             <DashboardLayout/>
         </PrivateRoute>,
+        children: [
+            {
+                path: "/dashboard/manage-decorators",
+                Component: ManageDecorators
+            }
+        ]
     }
 ]);

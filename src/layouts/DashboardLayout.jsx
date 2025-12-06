@@ -1,5 +1,6 @@
 import { FaHome } from "react-icons/fa";
-import { Outlet } from "react-router";
+import { FaUsers } from "react-icons/fa6";
+import { Link, Outlet } from "react-router";
 
 const DashboardLayout = () => {
     return (
@@ -27,11 +28,16 @@ const DashboardLayout = () => {
                     <ul className="menu w-full grow">
                         {/* List item */}
                         <li>
-                            <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Home">
-                                {/* Home icon */}
+                            <Link to="/dashboard" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Dashboard Home">
                                 <FaHome />
-                                <span className="is-drawer-close:hidden">Home</span>
-                            </button>
+                                <span className="is-drawer-close:hidden">Dashboard Home</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/manage-decorators" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Decorators">
+                                <FaUsers />
+                                <span className="is-drawer-close:hidden">Manage Decorators</span>
+                            </Link>
                         </li>
                     </ul>
                 </div>
