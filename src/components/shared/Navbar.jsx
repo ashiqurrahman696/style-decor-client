@@ -1,7 +1,9 @@
 import { Link, NavLink } from "react-router";
 import logo from "../../assets/logo.png";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+    const {user} = useAuth();
     const links = <>
         <li>
             <NavLink to="/">Home</NavLink>
@@ -15,6 +17,11 @@ const Navbar = () => {
         <li>
             <NavLink to="/">Contact</NavLink>
         </li>
+        {
+            user && <li>
+                <NavLink to="/dashboard">Dashboard</NavLink>
+            </li>
+        }
     </>;
     return (
         <div className="drawer sticky top-0 z-10">
@@ -51,8 +58,13 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end gap-3">
-                        <Link to="/login" className="btn btn-primary text-black">Login</Link>
-                        <Link to="/register" className="btn btn-secondary text-white">Register</Link>
+                        {user ? <>
+                            <img src={user.photoURL} className="size-10 rounded-full object-cover" />
+                            <button className="btn btn-primary text-black">Logout</button>
+                        </> : <>
+                            <Link to="/login" className="btn btn-primary text-black">Login</Link>
+                            <Link to="/register" className="btn btn-secondary text-white">Register</Link>
+                        </>}
                     </div>
                 </div>
             </div>
