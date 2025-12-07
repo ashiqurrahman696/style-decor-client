@@ -8,12 +8,17 @@ import ManageDecorators from "../pages/AdminDashboard/ManageDecorators";
 import AdminRoute from "./AdminRoute";
 import ManageServices from "../pages/AdminDashboard/ManageServices";
 import AddService from "../pages/AdminDashboard/AddService";
+import Home from "../pages/Home/Home";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         Component: MainLayout,
         children: [
+            {
+                index: true,
+                Component: Home
+            },
             {
                 path: "/login",
                 Component: Login
