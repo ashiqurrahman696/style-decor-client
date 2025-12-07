@@ -46,9 +46,9 @@ const DashboardLayout = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/dashboard/manage-services" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="manage Services">
+                                <Link to="/dashboard/manage-services" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Services">
                                     <GiSofa />
-                                    <span className="is-drawer-close:hidden">manage Services</span>
+                                    <span className="is-drawer-close:hidden">Manage Services</span>
                                 </Link>
                             </li>
                         </>}
