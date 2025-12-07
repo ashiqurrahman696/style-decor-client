@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import useAuth from "../../hooks/useAuth";
 
 const ServiceDetail = () => {
@@ -13,7 +13,7 @@ const ServiceDetail = () => {
                 <p>{service.description}</p>
                 <p><strong>Cost:</strong> Tk. {service.cost} {service.unit}</p>
                 <p><strong>Category:</strong> {service.service_category}</p>
-                {user && <button className="btn btn-primary text-white">Book Now</button>}
+                {user && <Link to={`/book-service/${service._id}`} className="btn btn-primary text-white">Book Now</Link>}
             </div>
         </div>
     );

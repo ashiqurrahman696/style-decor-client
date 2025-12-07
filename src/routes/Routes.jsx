@@ -10,6 +10,7 @@ import ManageServices from "../pages/AdminDashboard/ManageServices";
 import AddService from "../pages/AdminDashboard/AddService";
 import Home from "../pages/Home/Home";
 import ServiceDetail from "../pages/ServiceDetail/ServiceDetail";
+import BookingForm from "../pages/BookingForm/BookingForm";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,11 @@ export const router = createBrowserRouter([
             {
                 path: "/service/:id",
                 Component: ServiceDetail,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_baseURL}/service/${params.id}`)
+            },
+            {
+                path: "/book-service/:id",
+                Component: BookingForm,
                 loader: ({params}) => fetch(`${import.meta.env.VITE_baseURL}/service/${params.id}`)
             },
             {
