@@ -1,7 +1,23 @@
 import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const ManageServices = () => {
+    const axiosSecure = useAxiosSecure();
+    const { data: services = [], isLoading, refetch } = useQuery({
+        queryKey: ['services'],
+        queryFn: async () => {
+            const result = await axiosSecure(`/services`);
+            return result.data;
+        }
+    });
+
+    if (isLoading) {
+        return <div className="min-h-screen flex justify-center items-center">
+            <span className="loading loading-bars w-12"></span>
+        </div>;
+    }
     return (
         <div className="space-y-4">
             <div className="flex justify-between items-center">
@@ -10,37 +26,30 @@ const ManageServices = () => {
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
-                    {/* head */}
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>SL</th>
+                            <th>Service Name</th>
+                            <th>Cost</th>
+                            <th>Unit</th>
+                            <th>Category</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        {/* row 2 */}
-                        <tr>
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        {/* row 3 */}
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
+                        {services.map((service, index) => <tr key={service._id}>
+                            <th>{index + 1}</th>
+                            <td>{service.service_name}</td>
+                            <td>Tk {service.cost}</td>
+                            <td>{service.unit}</td>
+                            <td>{service.service_category}</td>
+                            <td>
+                                <div className="flex gap-2">
+                                    <button className="btn btn-primary text-white">Edit</button>
+                                    <button className="btn btn-secondary text-white">Delete</button>
+                                </div>
+                            </td>
+                        </tr>)}
                     </tbody>
                 </table>
             </div>
