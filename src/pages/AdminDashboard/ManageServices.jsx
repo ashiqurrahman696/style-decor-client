@@ -5,12 +5,12 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const ManageServices = () => {
     const [selectedService, setSelectedService] = useState(null);
     const axiosSecure = useAxiosSecure();
     const updateModalRef = useRef();
-    const { register, handleSubmit, formState: { errors } } = useForm();
     const { data: services = [], isLoading, refetch } = useQuery({
         queryKey: ['services'],
         queryFn: async () => {
@@ -24,8 +24,28 @@ const ManageServices = () => {
         updateModalRef.current.showModal();
     }
 
-    const handleUpdateService = data => {
-        console.log(data);
+    const handleUpdateService = e => {
+        e.preventDefault();
+        const form = e.target;
+        const service_name = form.service_name.value;
+        const cost = form.cost.value;
+        const unit = form.unit.value;
+        const service_category = form.service_category.value;
+        const description = form.description.value;
+        const updatedService = {
+            service_name: service_name,
+            cost: cost,
+            unit: unit,
+            service_category: service_category,
+            description: description,
+        };
+        axiosSecure.patch(`/services/${selectedService._id}`, updatedService)
+            .then(res => {
+                if(res.data.modifiedCount){
+                    refetch();
+                    toast.success("Service updated successfully");
+                }
+            });
     }
 
     const handleDeleteService = id => {
@@ -99,32 +119,18 @@ const ManageServices = () => {
                     {/* content */}
                     <div className="space-y-4">
                         <h2 className="text-4xl font-bold">Update Decoration Service</h2>
-                        <form onSubmit={handleSubmit(handleUpdateService)} className="grid md:grid-cols-2 gap-4">
+                        <form onSubmit={handleUpdateService} className="grid md:grid-cols-2 gap-4">
                             <div>
                                 <label className="label">Service Name</label>
-                                <input type="text" {...register("service_name", {
-                                    required: true,
-                                })} defaultValue={selectedService?.service_name} className="input w-full" placeholder="Service Name" />
-                                {
-                                    errors.service_name?.type === "required" &&
-                                    <p className="text-red-500">Service name is required</p>
-                                }
+                                <input type="text" name="service_name" defaultValue={selectedService?.service_name} className="input w-full" placeholder="Service Name" />
                             </div>
                             <div>
                                 <label className="label">Cost (BDT)</label>
-                                <input type="text" {...register("cost", {
-                                    required: true,
-                                })} defaultValue={selectedService?.cost} className="input w-full" placeholder="Cost (BDT)" />
-                                {
-                                    errors.cost?.type === "required" &&
-                                    <p className="text-red-500">Cost is required</p>
-                                }
+                                <input type="text" name="cost" defaultValue={selectedService?.cost} className="input w-full" placeholder="Cost (BDT)" />
                             </div>
                             <div>
                                 <label className="label">Unit</label>
-                                <select {...register("unit", {
-                                    required: true,
-                                })} defaultValue={selectedService?.unit} className="select w-full" placeholder="Unit">
+                                <select name="unit" defaultValue={selectedService?.unit} className="select w-full" placeholder="Unit">
                                     <option value="" disabled selected>Select Unit</option>
                                     <option value="per sqr-ft">per sqr-ft</option>
                                     <option value="per floor">per floor</option>
@@ -132,14 +138,10 @@ const ManageServices = () => {
                                     <option value="per event">per event</option>
                                     <option value="per session">per session</option>
                                 </select>
-                                {
-                                    errors.unit?.type === "required" &&
-                                    <p className="text-red-500">Unit is required</p>
-                                }
                             </div>
                             <div>
                                 <label className="label">Service Category</label>
-                                <select type="text" className="select w-full" placeholder="Service Category">
+                                <select type="text" name="service_category" className="select w-full" placeholder="Service Category">
                                     <option value="" disabled selected>Select Category</option>
                                     <option value="home">home</option>
                                     <option value="wedding">wedding</option>
@@ -147,20 +149,10 @@ const ManageServices = () => {
                                     <option value="seminar">seminar</option>
                                     <option value="meeting">meeting</option>
                                 </select>
-                                {
-                                    errors.service_category?.type === "required" &&
-                                    <p className="text-red-500">Service category is required</p>
-                                }
                             </div>
                             <div>
                                 <label className="label">Description</label>
-                                <textarea {...register("description", {
-                                    required: true,
-                                })} defaultValue={selectedService?.description} className="textarea w-full resize-none" rows={5} placeholder="Description" />
-                                {
-                                    errors.description?.type === "required" &&
-                                    <p className="text-red-500">Description is required</p>
-                                }
+                                <textarea name="description" defaultValue={selectedService?.description} className="textarea w-full resize-none" rows={5} placeholder="Description" />
                             </div>
                             <div className="col-span-full">
                                 <button className="btn btn-primary text-white">Update</button>
