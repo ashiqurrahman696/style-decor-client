@@ -4,13 +4,19 @@ import ServiceCard from "./ServiceCard";
 
 const Services = () => {
     const axios = useAxios();
-    const { data: serviceData = [] } = useQuery({
+    const { data: serviceData = [], isLoading } = useQuery({
         queryKey: ['serviceData'],
         queryFn: async () => {
             const result = await axios(`/services`);
             return result.data;
         }
     });
+
+    if (isLoading) {
+        return <div className="min-h-screen flex justify-center items-center">
+            <span className="loading loading-bars w-12"></span>
+        </div>;
+    }
     return (
         <div className="space-y-4">
             <h2 className="text-center text-4xl font-semibold">All Decoration Services</h2>
