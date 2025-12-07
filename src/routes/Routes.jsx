@@ -9,6 +9,7 @@ import AdminRoute from "./AdminRoute";
 import ManageServices from "../pages/AdminDashboard/ManageServices";
 import AddService from "../pages/AdminDashboard/AddService";
 import Home from "../pages/Home/Home";
+import ServiceDetail from "../pages/ServiceDetail/ServiceDetail";
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +19,11 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: "/service/:id",
+                Component: ServiceDetail,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_baseURL}/service/${params.id}`)
             },
             {
                 path: "/login",

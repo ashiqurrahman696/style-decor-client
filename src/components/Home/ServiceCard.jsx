@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const ServiceCard = ({service}) => {
     return (
         <div className="card bg-base-200 border border-neutral-300">
@@ -11,7 +13,7 @@ const ServiceCard = ({service}) => {
                 <h2 className="card-title">{service.service_name}</h2>
                 <p>{service.description}</p>
                 <div className="card-actions">
-                    <button className="btn btn-primary text-white">View Details</button>
+                    <Link to={`/service/${service._id}`} className="btn btn-primary text-white">View Details</Link>
                 </div>
             </div>
         </div>
