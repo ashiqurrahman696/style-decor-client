@@ -49,7 +49,7 @@ const AddService = () => {
                         required: true,
                     })} className="select w-full" placeholder="Unit">
                         <option value="" disabled selected>Select Unit</option>
-                        <option value="per sqrt-ft">per sqrt-ft</option>
+                        <option value="per sqr-ft">per sqr-ft</option>
                         <option value="per floor">per floor</option>
                         <option value="per meter">per meter</option>
                         <option value="per event">per event</option>

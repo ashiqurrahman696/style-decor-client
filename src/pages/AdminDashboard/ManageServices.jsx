@@ -3,9 +3,14 @@ import { Link } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const ManageServices = () => {
+    const [selectedService, setSelectedService] = useState(null);
     const axiosSecure = useAxiosSecure();
+    const updateModalRef = useRef();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const { data: services = [], isLoading, refetch } = useQuery({
         queryKey: ['services'],
         queryFn: async () => {
@@ -13,6 +18,15 @@ const ManageServices = () => {
             return result.data;
         }
     });
+
+    const openUpdateService = service => {
+        setSelectedService(service);
+        updateModalRef.current.showModal();
+    }
+
+    const handleUpdateService = data => {
+        console.log(data);
+    }
 
     const handleDeleteService = id => {
         Swal.fire({
@@ -72,7 +86,7 @@ const ManageServices = () => {
                             <td>{service.service_category}</td>
                             <td>
                                 <div className="flex gap-2">
-                                    <button className="btn btn-primary text-white">Edit</button>
+                                    <button onClick={() => openUpdateService(service)} className="btn btn-primary text-white">Edit</button>
                                     <button onClick={() => handleDeleteService(service._id)} className="btn btn-secondary text-white">Delete</button>
                                 </div>
                             </td>
@@ -80,6 +94,87 @@ const ManageServices = () => {
                     </tbody>
                 </table>
             </div>
+            <dialog ref={updateModalRef} className="modal">
+                <div className="modal-box w-11/12 max-w-5xl">
+                    {/* content */}
+                    <div className="space-y-4">
+                        <h2 className="text-4xl font-bold">Update Decoration Service</h2>
+                        <form onSubmit={handleSubmit(handleUpdateService)} className="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label className="label">Service Name</label>
+                                <input type="text" {...register("service_name", {
+                                    required: true,
+                                })} defaultValue={selectedService?.service_name} className="input w-full" placeholder="Service Name" />
+                                {
+                                    errors.service_name?.type === "required" &&
+                                    <p className="text-red-500">Service name is required</p>
+                                }
+                            </div>
+                            <div>
+                                <label className="label">Cost (BDT)</label>
+                                <input type="text" {...register("cost", {
+                                    required: true,
+                                })} defaultValue={selectedService?.cost} className="input w-full" placeholder="Cost (BDT)" />
+                                {
+                                    errors.cost?.type === "required" &&
+                                    <p className="text-red-500">Cost is required</p>
+                                }
+                            </div>
+                            <div>
+                                <label className="label">Unit</label>
+                                <select {...register("unit", {
+                                    required: true,
+                                })} defaultValue={selectedService?.unit} className="select w-full" placeholder="Unit">
+                                    <option value="" disabled selected>Select Unit</option>
+                                    <option value="per sqr-ft">per sqr-ft</option>
+                                    <option value="per floor">per floor</option>
+                                    <option value="per meter">per meter</option>
+                                    <option value="per event">per event</option>
+                                    <option value="per session">per session</option>
+                                </select>
+                                {
+                                    errors.unit?.type === "required" &&
+                                    <p className="text-red-500">Unit is required</p>
+                                }
+                            </div>
+                            <div>
+                                <label className="label">Service Category</label>
+                                <select type="text" className="select w-full" placeholder="Service Category">
+                                    <option value="" disabled selected>Select Category</option>
+                                    <option value="home">home</option>
+                                    <option value="wedding">wedding</option>
+                                    <option value="office">office</option>
+                                    <option value="seminar">seminar</option>
+                                    <option value="meeting">meeting</option>
+                                </select>
+                                {
+                                    errors.service_category?.type === "required" &&
+                                    <p className="text-red-500">Service category is required</p>
+                                }
+                            </div>
+                            <div>
+                                <label className="label">Description</label>
+                                <textarea {...register("description", {
+                                    required: true,
+                                })} defaultValue={selectedService?.description} className="textarea w-full resize-none" rows={5} placeholder="Description" />
+                                {
+                                    errors.description?.type === "required" &&
+                                    <p className="text-red-500">Description is required</p>
+                                }
+                            </div>
+                            <div className="col-span-full">
+                                <button className="btn btn-primary text-white">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="modal-action">
+                        <form method="dialog">
+                            {/* if there is a button, it will close the modal */}
+                            <button className="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </div>
     );
 };
