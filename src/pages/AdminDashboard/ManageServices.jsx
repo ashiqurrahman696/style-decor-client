@@ -2,6 +2,7 @@ import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const ManageServices = () => {
     const axiosSecure = useAxiosSecure();
@@ -12,6 +13,32 @@ const ManageServices = () => {
             return result.data;
         }
     });
+
+    const handleDeleteService = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/services/${id}`)
+                    .then(res => {
+                        if(res.data.deletedCount){
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Service has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    });
+            }
+        });
+    }
 
     if (isLoading) {
         return <div className="min-h-screen flex justify-center items-center">
@@ -46,7 +73,7 @@ const ManageServices = () => {
                             <td>
                                 <div className="flex gap-2">
                                     <button className="btn btn-primary text-white">Edit</button>
-                                    <button className="btn btn-secondary text-white">Delete</button>
+                                    <button onClick={() => handleDeleteService(service._id)} className="btn btn-secondary text-white">Delete</button>
                                 </div>
                             </td>
                         </tr>)}
