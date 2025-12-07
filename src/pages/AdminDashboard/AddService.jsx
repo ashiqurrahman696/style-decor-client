@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import useAxios from "../../hooks/useAxios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 
 const AddService = () => {
     const {user} = useAuth();
+    const axios = useAxios()
     const axiosSecure =useAxiosSecure();
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -12,11 +14,24 @@ const AddService = () => {
         data.cost = Number(data.cost);
         data.created_by = user.email;
         data.created_at = new Date().toISOString();
-        axiosSecure.post("/services", data)
+        const packageImg = data.packageImg[0];
+        const formData = new FormData();
+        formData.append("image", packageImg);
+        const imgApiURL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imgbbApi}`;
+        axios.post(imgApiURL, formData)
             .then(res => {
-                if(res.data.insertedId){
-                    toast.success("Service added successfully");
-                }
+                const packageImgURL = res.data.data.display_url;
+                data.packageImgURL = packageImgURL;
+                axiosSecure.post("/services", data)
+                    .then(res => {
+                        if(res.data.insertedId){
+                            toast.success("Service added successfully");
+                        }
+                    }).catch(error => {
+                        toast.error(error.message);
+                    });
+            }).catch(error => {
+                toast.error(error.message);
             });
     }
     return (
@@ -85,6 +100,16 @@ const AddService = () => {
                     {
                         errors.description?.type === "required" &&
                         <p className="text-red-500">Description is required</p>
+                    }
+                </div>
+                <div>
+                    <label className="label">Package Image</label>
+                    <input type="file" {...register("packageImg", {
+                        required: true,
+                    })} className="file-input w-full" />
+                    {
+                        errors.packageImg?.type === "required" &&
+                        <p className="text-red-500">Package Image is required</p>
                     }
                 </div>
                 <div className="col-span-full">

@@ -74,8 +74,8 @@ const Register = () => {
                             required: true,
                         })} className="file-input w-full" />
                         {
-                            errors.image?.type === "required" &&
-                            <p className="text-red-500">Image is required</p>
+                            errors.photo?.type === "required" &&
+                            <p className="text-red-500">Photo is required</p>
                         }
                         <label className="label">Email</label>
                         <input type="email" {...register("email", {
