@@ -1,4 +1,4 @@
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaRegCalendarAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa6";
 import { GiSofa } from "react-icons/gi";
 import { Link, Outlet } from "react-router";
@@ -49,6 +49,12 @@ const DashboardLayout = () => {
                                 <Link to="/dashboard/manage-services" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Services">
                                     <GiSofa />
                                     <span className="is-drawer-close:hidden">Manage Services</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/manage-bookings" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Bookings">
+                                    <FaRegCalendarAlt />
+                                    <span className="is-drawer-close:hidden">Manage Bookings</span>
                                 </Link>
                             </li>
                         </>}

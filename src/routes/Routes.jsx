@@ -11,6 +11,7 @@ import AddService from "../pages/AdminDashboard/AddService";
 import Home from "../pages/Home/Home";
 import ServiceDetail from "../pages/ServiceDetail/ServiceDetail";
 import BookingForm from "../pages/BookingForm/BookingForm";
+import ManageBookings from "../pages/AdminDashboard/ManageBookings";
 
 export const router = createBrowserRouter([
     {
@@ -63,6 +64,12 @@ export const router = createBrowserRouter([
                 path: "/dashboard/add-service",
                 element: <AdminRoute>
                     <AddService/>
+                </AdminRoute>
+            },
+            {
+                path: "/dashboard/manage-bookings",
+                element: <AdminRoute>
+                    <ManageBookings/>
                 </AdminRoute>
             },
         ]
