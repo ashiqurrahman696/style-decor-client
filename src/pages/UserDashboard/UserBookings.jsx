@@ -62,7 +62,7 @@ const UserBookings = () => {
                             <td>{booking.location}</td>
                             <td>{booking.service_name}</td>
                             <td>{booking.cost}</td>
-                            <td>{new Date(booking.created_at).toLocaleString()}</td>
+                            <td>{new Date(booking.booking_date).toLocaleDateString()}</td>
                             <td>{booking.payment_status}</td>
                             <td>
                                 <div className="flex gap-2">
