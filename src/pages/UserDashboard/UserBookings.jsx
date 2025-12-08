@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const UserBookings = () => {
     const [selectedBooking, setSelectedBooking] = useState(null);
@@ -36,6 +37,33 @@ const UserBookings = () => {
                 }
             });
     }
+
+    const handleCancelBooking = id => {
+        Swal.fire({
+            title: "Are you sure to Cancel?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, cancel it!",
+            cancelButtonText: "No, keep it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/booking/${id}`)
+                    .then(res => {
+                        if(res.data.deletedCount){
+                            refetch();
+                            Swal.fire({
+                                title: "Cancelled!",
+                                text: "Booking has been cancelled.",
+                                icon: "success"
+                            });
+                        }
+                    });
+            }
+        });
+    }
     return (
         <div className="space-y-4">
             <h2 className="text-4xl font-bold">My Bookings</h2>
@@ -68,7 +96,7 @@ const UserBookings = () => {
                                 <div className="flex gap-2">
                                     {booking.payment_status === "unpaid" && <button className="btn btn-primary text-black">Pay</button>}
                                     <button onClick={() => openUpdateBooking(booking)} className="btn btn-secondary text-white">Update</button>
-                                    <button className="btn btn-primary text-black">Cancel</button>
+                                    <button onClick={() => handleCancelBooking(booking._id)} className="btn btn-primary text-black">Cancel</button>
                                 </div>
                             </td>
                         </tr>)}
