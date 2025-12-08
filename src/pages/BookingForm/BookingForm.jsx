@@ -11,6 +11,7 @@ const BookingForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const handleBookService = data => {
+        data.cost = Number(data.cost);
         axiosSecure.post("/booking", data)
             .then(res => {
                 if(res.data.insertedId){
