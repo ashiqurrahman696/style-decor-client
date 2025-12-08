@@ -94,7 +94,7 @@ const UserBookings = () => {
                             <td>{booking.payment_status}</td>
                             <td>
                                 <div className="flex gap-2">
-                                    {booking.payment_status === "unpaid" && <button className="btn btn-primary text-black">Pay</button>}
+                                    {booking.payment_status !== "paid" && <button className="btn btn-primary text-black">Pay</button>}
                                     <button onClick={() => openUpdateBooking(booking)} className="btn btn-secondary text-white">Update</button>
                                     <button onClick={() => handleCancelBooking(booking._id)} className="btn btn-primary text-black">Cancel</button>
                                 </div>
