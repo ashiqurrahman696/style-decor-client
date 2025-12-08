@@ -1,5 +1,5 @@
 import { FaHome, FaRegCalendarAlt } from "react-icons/fa";
-import { FaUsers } from "react-icons/fa6";
+import { FaUser, FaUsers } from "react-icons/fa6";
 import { GiSofa } from "react-icons/gi";
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
@@ -38,6 +38,14 @@ const DashboardLayout = () => {
                                 <span className="is-drawer-close:hidden">Dashboard Home</span>
                             </Link>
                         </li>
+                        {role === "user" && <>
+                            <li>
+                                <Link to="/dashboard/user-profile" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Profile">
+                                    <FaUser />
+                                    <span className="is-drawer-close:hidden">My Profile</span>
+                                </Link>
+                            </li>
+                        </>}
                         {role === "admin" && <>
                             <li>
                                 <Link to="/dashboard/manage-decorators" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Decorators">

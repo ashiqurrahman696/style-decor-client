@@ -12,6 +12,8 @@ import Home from "../pages/Home/Home";
 import ServiceDetail from "../pages/ServiceDetail/ServiceDetail";
 import BookingForm from "../pages/BookingForm/BookingForm";
 import ManageBookings from "../pages/AdminDashboard/ManageBookings";
+import UserRoute from "./UserRoute";
+import UserProfile from "../pages/UserDashboard/UserProfile";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +50,7 @@ export const router = createBrowserRouter([
             <DashboardLayout/>
         </PrivateRoute>,
         children: [
+            // Admin routes
             {
                 path: "/dashboard/manage-decorators",
                 element: <AdminRoute>
@@ -72,6 +75,13 @@ export const router = createBrowserRouter([
                     <ManageBookings/>
                 </AdminRoute>
             },
+            // User routes
+            {
+                path: "/dashboard/user-profile",
+                element: <UserRoute>
+                    <UserProfile/>
+                </UserRoute>
+            }
         ]
     }
 ]);
