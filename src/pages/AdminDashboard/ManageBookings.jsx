@@ -1,40 +1,43 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+
 const ManageBookings = () => {
+    const axiosSecure = useAxiosSecure();
+    const { data: bookings = [], isLoading, refetch } = useQuery({
+        queryKey: ['bookings'],
+        queryFn: async () => {
+            const result = await axiosSecure(`/bookings`);
+            return result.data;
+        }
+    });
     return (
         <div className="space-y-4">
             <h2 className="text-4xl font-bold">Manage Bookings</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
-                    {/* head */}
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>SL</th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Email</th>
+                            <th>Location</th>
+                            <th>Service Name</th>
+                            <th>Cost</th>
+                            <th>Booking Date</th>
+                            <th>Payment Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        {/* row 2 */}
-                        <tr>
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        {/* row 3 */}
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
+                        {bookings.map((booking, index) => <tr key={booking._id}>
+                            <th>{index + 1}</th>
+                            <td>{booking.name}</td>
+                            <td>{booking.email}</td>
+                            <td>{booking.location}</td>
+                            <td>{booking.service_name}</td>
+                            <td>{booking.cost}</td>
+                            <td>{new Date(booking.created_at).toLocaleString()}</td>
+                            <td>{booking.payment_status}</td>
+                        </tr>)}
                     </tbody>
                 </table>
             </div>
