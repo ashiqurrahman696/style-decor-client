@@ -68,7 +68,7 @@ const ManageDecorators = () => {
                             </td>
                             <td>{user.role}</td>
                             <th>
-                                <button onClick={() => handleMakeDecorator(user._id)} className="btn btn-primary text-black">Make Decorator</button>
+                                {user.role === "decorator" || <button onClick={() => handleMakeDecorator(user._id)} className="btn btn-primary text-black">Make Decorator</button>}
                             </th>
                         </tr>)}
                     </tbody>
