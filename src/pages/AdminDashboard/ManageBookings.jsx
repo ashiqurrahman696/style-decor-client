@@ -1,13 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useState } from "react";
 
 const ManageBookings = () => {
     const axiosSecure = useAxiosSecure();
+    const [totalPage, setTotalPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
+    const limit = 10;
     const { data: bookings = [], isLoading, refetch } = useQuery({
-        queryKey: ['bookings'],
+        queryKey: ['bookings', currentPage],
         queryFn: async () => {
-            const result = await axiosSecure(`/bookings`);
-            return result.data;
+            const result = await axiosSecure(`/bookings?limit=${limit}&skip=${currentPage * limit}`);
+            const page = Math.ceil(result.data.total / limit);
+            setTotalPage(page);
+            return result.data.result;
         }
     });
     return (
@@ -40,6 +46,22 @@ const ManageBookings = () => {
                         </tr>)}
                     </tbody>
                 </table>
+            </div>
+            <div className="flex justify-center flex-wrap gap-3 py-10">
+                {
+                    currentPage > 0 &&
+                    <button onClick={() => setCurrentPage(currentPage - 1)} className="btn btn-primary text-black">&lt; Prev</button>
+
+                }
+                {
+                    [...Array(totalPage).keys()].map((i) =>
+                        <button onClick={() => setCurrentPage(i)} className={`btn ${i === currentPage && "btn-primary text-black"}`}>{i}</button>
+                    )
+                }
+                {
+                    currentPage < totalPage - 1 &&
+                    <button onClick={() => setCurrentPage(currentPage + 1)} className="btn btn-primary text-black">Next &gt;</button>
+                }
             </div>
         </div>
     );
