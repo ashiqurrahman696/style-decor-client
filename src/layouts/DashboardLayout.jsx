@@ -1,6 +1,7 @@
 import { FaHome, FaRegCalendarAlt } from "react-icons/fa";
 import { FaUser, FaUsers } from "react-icons/fa6";
 import { GiSofa } from "react-icons/gi";
+import { TbCalendarUser } from "react-icons/tb";
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
 import { ToastContainer } from "react-toastify";
@@ -43,6 +44,12 @@ const DashboardLayout = () => {
                                 <Link to="/dashboard/user-profile" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Profile">
                                     <FaUser />
                                     <span className="is-drawer-close:hidden">My Profile</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/user-bookings" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Bookings">
+                                    <TbCalendarUser />
+                                    <span className="is-drawer-close:hidden">My Bookings</span>
                                 </Link>
                             </li>
                         </>}

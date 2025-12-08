@@ -14,6 +14,7 @@ import BookingForm from "../pages/BookingForm/BookingForm";
 import ManageBookings from "../pages/AdminDashboard/ManageBookings";
 import UserRoute from "./UserRoute";
 import UserProfile from "../pages/UserDashboard/UserProfile";
+import UserBookings from "../pages/UserDashboard/UserBookings";
 
 export const router = createBrowserRouter([
     {
@@ -81,7 +82,13 @@ export const router = createBrowserRouter([
                 element: <UserRoute>
                     <UserProfile/>
                 </UserRoute>
-            }
+            },
+            {
+                path: "/dashboard/user-bookings",
+                element: <UserRoute>
+                    <UserBookings/>
+                </UserRoute>
+            },
         ]
     }
 ]);
