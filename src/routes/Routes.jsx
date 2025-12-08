@@ -15,6 +15,7 @@ import ManageBookings from "../pages/AdminDashboard/ManageBookings";
 import UserRoute from "./UserRoute";
 import UserProfile from "../pages/UserDashboard/UserProfile";
 import UserBookings from "../pages/UserDashboard/UserBookings";
+import NotFound404 from "../pages/NotFound404/NotFound404";
 
 export const router = createBrowserRouter([
     {
@@ -90,5 +91,9 @@ export const router = createBrowserRouter([
                 </UserRoute>
             },
         ]
+    },
+    {
+        path: "*",
+        Component: NotFound404,
     }
 ]);
