@@ -13,7 +13,7 @@ const ServiceDetail = () => {
                 <p>{service.description}</p>
                 <p><strong>Cost:</strong> Tk. {service.cost} {service.unit}</p>
                 <p><strong>Category:</strong> {service.service_category}</p>
-                {user && <Link to={`/book-service/${service._id}`} className="btn btn-primary text-white">Book Now</Link>}
+                {user && <Link to={`/book-service/${service._id}`} className="btn btn-primary text-black">Book Now</Link>}
             </div>
         </div>
     );

@@ -83,7 +83,7 @@ const ManageServices = () => {
         <div className="space-y-4">
             <div className="flex justify-between items-center">
                 <h2 className="text-4xl font-bold">Manage Decoration Services</h2>
-                <Link to="/dashboard/add-service" className="btn btn-primary text-white"><FaPlus />Add Service</Link>
+                <Link to="/dashboard/add-service" className="btn btn-primary text-black"><FaPlus />Add Service</Link>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
@@ -106,7 +106,7 @@ const ManageServices = () => {
                             <td>{service.service_category}</td>
                             <td>
                                 <div className="flex gap-2">
-                                    <button onClick={() => openUpdateService(service)} className="btn btn-primary text-white">Edit</button>
+                                    <button onClick={() => openUpdateService(service)} className="btn btn-primary text-black">Edit</button>
                                     <button onClick={() => handleDeleteService(service._id)} className="btn btn-secondary text-white">Delete</button>
                                 </div>
                             </td>
@@ -155,7 +155,7 @@ const ManageServices = () => {
                                 <textarea name="description" defaultValue={selectedService?.description} className="textarea w-full resize-none" rows={5} placeholder="Description" />
                             </div>
                             <div className="col-span-full">
-                                <button className="btn btn-primary text-white">Update</button>
+                                <button className="btn btn-primary text-black">Update</button>
                             </div>
                         </form>
                     </div>

@@ -100,7 +100,7 @@ const BookingForm = () => {
                             }
                         </div>
                         <div className="col-span-full">
-                            <button className="btn btn-primary text-white">Submit</button>
+                            <button className="btn btn-primary text-black">Submit</button>
                         </div>
                     </form>
                 </div>

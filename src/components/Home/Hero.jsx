@@ -23,7 +23,7 @@ const Hero = () => {
                 <motion.h2 variants={item} className="text-5xl font-semibold">Bring the Canvas of Nature Indoors</motion.h2>
                 <motion.p variants={item}>Where Beauty Is Intentional And Every Decor Piece Tells A Story</motion.p>
                 <motion.div variants={item}>
-                    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-primary text-white">Book Decoration Service</motion.button>
+                    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-primary text-black">Book Decoration Service</motion.button>
                 </motion.div>
             </motion.div>
         </div>
