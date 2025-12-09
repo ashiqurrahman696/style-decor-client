@@ -42,6 +42,7 @@ const ManageServices = () => {
         axiosSecure.patch(`/services/${selectedService._id}`, updatedService)
             .then(res => {
                 if(res.data.modifiedCount){
+                    updateModalRef.current.close();
                     refetch();
                     toast.success("Service updated successfully");
                 }
