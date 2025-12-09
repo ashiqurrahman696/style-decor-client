@@ -31,6 +31,7 @@ const ManageBookings = () => {
                             <th>Cost</th>
                             <th>Booking Date</th>
                             <th>Payment Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,6 +44,7 @@ const ManageBookings = () => {
                             <td>{booking.cost}</td>
                             <td>{new Date(booking.booking_date).toLocaleDateString()}</td>
                             <td>{booking.payment_status}</td>
+                            <td>{booking.payment_status === "paid" && <button className="btn btn-primary text-black">Assign Decorator</button>}</td>
                         </tr>)}
                     </tbody>
                 </table>
