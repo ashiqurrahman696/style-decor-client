@@ -16,6 +16,7 @@ import UserRoute from "./UserRoute";
 import UserProfile from "../pages/UserDashboard/UserProfile";
 import UserBookings from "../pages/UserDashboard/UserBookings";
 import NotFound404 from "../pages/NotFound404/NotFound404";
+import PaymentSuccess from "../pages/UserDashboard/PaymentSuccess";
 
 export const router = createBrowserRouter([
     {
@@ -88,6 +89,12 @@ export const router = createBrowserRouter([
                 path: "/dashboard/user-bookings",
                 element: <UserRoute>
                     <UserBookings/>
+                </UserRoute>
+            },
+            {
+                path: "/dashboard/payment-success",
+                element: <UserRoute>
+                    <PaymentSuccess/>
                 </UserRoute>
             },
         ]
