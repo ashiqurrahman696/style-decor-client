@@ -18,6 +18,18 @@ const UserBookings = () => {
         }
     });
 
+    const handlePayment = async(booking) => {
+        const paymentInfo = {
+            bookingId: booking._id,
+            cost: Number(booking.cost),
+            service_name: booking.service_name,
+            customer_name: booking.name,
+            customer_email: booking.email,
+        };
+        const res = await axiosSecure.post('/create-checkout-session', paymentInfo);
+        window.location.assign(res.data.url);
+    }
+
     const openUpdateBooking = booking => {
         setSelectedBooking(booking);
         updateModalRef.current.showModal();
@@ -94,7 +106,7 @@ const UserBookings = () => {
                             <td>{booking.payment_status}</td>
                             <td>
                                 <div className="flex gap-2">
-                                    {booking.payment_status !== "paid" && <button className="btn btn-primary text-black">Pay</button>}
+                                    {booking.payment_status !== "paid" && <button onClick={() => handlePayment(booking)} className="btn btn-primary text-black">Pay</button>}
                                     <button onClick={() => openUpdateBooking(booking)} className="btn btn-secondary text-white">Update</button>
                                     <button onClick={() => handleCancelBooking(booking._id)} className="btn btn-primary text-black">Cancel</button>
                                 </div>
