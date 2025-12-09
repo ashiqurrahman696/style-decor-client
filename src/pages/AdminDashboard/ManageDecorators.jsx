@@ -54,7 +54,7 @@ const ManageDecorators = () => {
                     </thead>
                     <tbody>
                         {users.map((user, index) => <tr key={user._id}>
-                            <th>{index + 1}</th>
+                            <th>{index + (currentPage * limit) + 1}</th>
                             <td>
                                 <div className="flex items-center gap-3">
                                     <div className="avatar">
