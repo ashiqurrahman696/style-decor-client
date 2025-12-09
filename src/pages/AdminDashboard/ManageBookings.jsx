@@ -10,7 +10,7 @@ const ManageBookings = () => {
     const { data: bookings = [], isLoading, refetch } = useQuery({
         queryKey: ['bookings', currentPage],
         queryFn: async () => {
-            const result = await axiosSecure(`/bookings?limit=${limit}&skip=${currentPage * limit}`);
+            const result = await axiosSecure(`/bookings?limit=${limit}&skip=${currentPage * limit}&service_status=pending`);
             const page = Math.ceil(result.data.total / limit);
             setTotalPage(page);
             return result.data.result;
