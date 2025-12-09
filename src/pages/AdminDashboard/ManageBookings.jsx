@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const ManageBookings = () => {
     const axiosSecure = useAxiosSecure();
     const [totalPage, setTotalPage] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
+    const decoratorModalRef = useRef();
     const limit = 10;
-    const { data: bookings = [], isLoading, refetch } = useQuery({
+    const { data: bookings = [], isLoading: isBookingLoadinf, refetch: bookingRefetch } = useQuery({
         queryKey: ['bookings', currentPage],
         queryFn: async () => {
             const result = await axiosSecure(`/bookings?limit=${limit}&skip=${currentPage * limit}&service_status=pending`);
@@ -16,6 +17,19 @@ const ManageBookings = () => {
             return result.data.result;
         }
     });
+    const {data: decorators = [], isLoading: isDecoratorLoading, refetch: decoratorRefetch} = useQuery({
+        queryKey: ['decorators', 'available'],
+        queryFn: async() => {
+            const result = await axiosSecure(`/users?role=decorator&work_status=available`);
+            return result.data.result;
+        }
+    });
+    const openDecoratorRefModal = () => {
+        decoratorModalRef.current.showModal();
+    }
+    const handleAssignDecorator = decorator => {
+
+    }
     return (
         <div className="space-y-4">
             <h2 className="text-4xl font-bold">Manage Bookings</h2>
@@ -36,7 +50,7 @@ const ManageBookings = () => {
                     </thead>
                     <tbody>
                         {bookings.map((booking, index) => <tr key={booking._id}>
-                            <th>{index + 1}</th>
+                            <th>{index + (currentPage * limit) + 1}</th>
                             <td>{booking.name}</td>
                             <td>{booking.email}</td>
                             <td>{booking.location}</td>
@@ -44,7 +58,7 @@ const ManageBookings = () => {
                             <td>{booking.cost}</td>
                             <td>{new Date(booking.booking_date).toLocaleDateString()}</td>
                             <td>{booking.payment_status}</td>
-                            <td>{booking.payment_status === "paid" && <button className="btn btn-primary text-black">Find Decorators</button>}</td>
+                            <td>{booking.payment_status === "paid" && <button onClick={openDecoratorRefModal} className="btn btn-primary text-black">Find Decorators</button>}</td>
                         </tr>)}
                     </tbody>
                 </table>
@@ -65,6 +79,42 @@ const ManageBookings = () => {
                     <button onClick={() => setCurrentPage(currentPage + 1)} className="btn btn-primary text-black">Next &gt;</button>
                 }
             </div>
+            <dialog ref={decoratorModalRef} className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Decorators: {decorators.length}!</h3>
+
+                    <div className="overflow-x-auto">
+                        <table className="table table-zebra">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {decorators.map((decorator, i) => <tr key={decorator._id}>
+                                    <th>{i + 1}</th>
+                                    <td>{decorator.displayName}</td>
+                                    <td>{decorator.email}</td>
+                                    <td>
+                                        <button onClick={() => handleAssignDecorator(decorator)} className='btn btn-primary text-black'>Assign</button>
+                                    </td>
+                                </tr>)}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="modal-action">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </div>
     );
 };
