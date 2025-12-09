@@ -17,6 +17,7 @@ import UserProfile from "../pages/UserDashboard/UserProfile";
 import UserBookings from "../pages/UserDashboard/UserBookings";
 import NotFound404 from "../pages/NotFound404/NotFound404";
 import PaymentSuccess from "../pages/UserDashboard/PaymentSuccess";
+import PaymentCancelled from "../pages/UserDashboard/PaymentCancelled";
 
 export const router = createBrowserRouter([
     {
@@ -95,6 +96,12 @@ export const router = createBrowserRouter([
                 path: "/dashboard/payment-success",
                 element: <UserRoute>
                     <PaymentSuccess/>
+                </UserRoute>
+            },
+            {
+                path: "/dashboard/payment-cancelled",
+                element: <UserRoute>
+                    <PaymentCancelled/>
                 </UserRoute>
             },
         ]
