@@ -19,6 +19,8 @@ import NotFound404 from "../pages/NotFound404/NotFound404";
 import PaymentSuccess from "../pages/UserDashboard/PaymentSuccess";
 import PaymentCancelled from "../pages/UserDashboard/PaymentCancelled";
 import PaymentHistory from "../pages/UserDashboard/PaymentHistory";
+import DecoratorRoute from "./DecoratorRoute";
+import AssignedServices from "../pages/DecoratorDashboard/AssignedServices";
 
 export const router = createBrowserRouter([
     {
@@ -49,6 +51,8 @@ export const router = createBrowserRouter([
             }
         ]
     },
+
+    // Dashboard routes
     {
         path: "/dashboard",
         element: <PrivateRoute>
@@ -80,6 +84,15 @@ export const router = createBrowserRouter([
                     <ManageBookings/>
                 </AdminRoute>
             },
+
+            // Decorator routes
+            {
+                path: "/dashboard/assigned-services",
+                element: <DecoratorRoute>
+                    <AssignedServices/>
+                </DecoratorRoute>
+            },
+
             // User routes
             {
                 path: "/dashboard/user-profile",

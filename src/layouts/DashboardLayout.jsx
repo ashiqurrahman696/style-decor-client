@@ -2,6 +2,7 @@ import { FaHome, FaRegCalendarAlt } from "react-icons/fa";
 import { FaUser, FaUsers } from "react-icons/fa6";
 import { GiSofa } from "react-icons/gi";
 import { IoMdCard } from "react-icons/io";
+import { MdRoomService } from "react-icons/md";
 import { TbCalendarUser } from "react-icons/tb";
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
@@ -57,6 +58,14 @@ const DashboardLayout = () => {
                                 <Link to="/dashboard/payment-history" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment History">
                                     <IoMdCard />
                                     <span className="is-drawer-close:hidden">Payment History</span>
+                                </Link>
+                            </li>
+                        </>}
+                        {role === "decorator" && <>
+                            <li>
+                                <Link to="/dashboard/assigned-services" className="is-drawer-close:tooltip is-drawer-close:tooltip-right"  data-tip="Assigned Services">
+                                    <MdRoomService />
+                                    <span className="is-drawer-close:hidden">Assigned Services</span>
                                 </Link>
                             </li>
                         </>}
