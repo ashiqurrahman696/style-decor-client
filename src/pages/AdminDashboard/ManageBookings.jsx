@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 const ManageBookings = () => {
     const axiosSecure = useAxiosSecure();
+    const [selectedBooking, setSelectedBooking] = useState(null);
     const [totalPage, setTotalPage] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const decoratorModalRef = useRef();
@@ -24,11 +26,27 @@ const ManageBookings = () => {
             return result.data.result;
         }
     });
-    const openDecoratorRefModal = () => {
+    const openDecoratorRefModal = booking => {
+        setSelectedBooking(booking);
         decoratorModalRef.current.showModal();
     }
     const handleAssignDecorator = decorator => {
-
+        const decoratorAssignInfo = {
+            decoratorId: decorator._id,
+            decoratorName: decorator.displayName,
+            decoratorEmail: decorator.email,
+            bookingId: selectedBooking._id,
+        };
+        console.log(decoratorAssignInfo)
+        axiosSecure.patch(`/booking/${selectedBooking._id}/assigned`, decoratorAssignInfo)
+            .then(res => {
+                if(res.data.modifiedCount){
+                    decoratorModalRef.current.close();
+                    bookingRefetch();
+                    decoratorRefetch();
+                    toast.success("Decorator has been assigned");
+                }
+            });
     }
     return (
         <div className="space-y-4">
@@ -58,7 +76,7 @@ const ManageBookings = () => {
                             <td>{booking.cost}</td>
                             <td>{new Date(booking.booking_date).toLocaleDateString()}</td>
                             <td>{booking.payment_status}</td>
-                            <td>{booking.payment_status === "paid" && <button onClick={openDecoratorRefModal} className="btn btn-primary text-black">Find Decorators</button>}</td>
+                            <td>{booking.payment_status === "paid" && <button onClick={() => openDecoratorRefModal(booking)} className="btn btn-primary text-black">Find Decorators</button>}</td>
                         </tr>)}
                     </tbody>
                 </table>
