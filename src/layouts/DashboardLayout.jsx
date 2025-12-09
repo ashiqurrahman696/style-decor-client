@@ -1,6 +1,7 @@
 import { FaHome, FaRegCalendarAlt } from "react-icons/fa";
 import { FaUser, FaUsers } from "react-icons/fa6";
 import { GiSofa } from "react-icons/gi";
+import { IoMdCard } from "react-icons/io";
 import { TbCalendarUser } from "react-icons/tb";
 import { Link, Outlet } from "react-router";
 import useRole from "../hooks/useRole";
@@ -50,6 +51,12 @@ const DashboardLayout = () => {
                                 <Link to="/dashboard/user-bookings" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Bookings">
                                     <TbCalendarUser />
                                     <span className="is-drawer-close:hidden">My Bookings</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/payment-history" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment History">
+                                    <IoMdCard />
+                                    <span className="is-drawer-close:hidden">Payment History</span>
                                 </Link>
                             </li>
                         </>}
