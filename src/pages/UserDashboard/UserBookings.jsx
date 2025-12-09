@@ -91,6 +91,7 @@ const UserBookings = () => {
                             <th>Cost</th>
                             <th>Booking Date</th>
                             <th>Payment Status</th>
+                            <th>Service Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -104,6 +105,7 @@ const UserBookings = () => {
                             <td>{booking.cost}</td>
                             <td>{new Date(booking.booking_date).toLocaleDateString()}</td>
                             <td>{booking.payment_status}</td>
+                            <td>{booking.service_status}</td>
                             <td>
                                 <div className="flex gap-2">
                                     {booking.payment_status !== "paid" && <button onClick={() => handlePayment(booking)} className="btn btn-primary text-black">Pay</button>}
