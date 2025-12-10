@@ -44,6 +44,7 @@ const UserBookings = () => {
         axiosSecure.patch(`/booking/${selectedBooking._id}`, updatedBooking)
             .then(res => {
                 if(res.data.modifiedCount){
+                    updateModalRef.current.close();
                     refetch();
                     toast.success("Booking updated successfully");
                 }
