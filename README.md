@@ -35,3 +35,6 @@
 - react-toastify
 - recharts
 - sweetalert2
+
+## Live URL
+[https://style-decor.netlify.app](https://style-decor.netlify.app)
