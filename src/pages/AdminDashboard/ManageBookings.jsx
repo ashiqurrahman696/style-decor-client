@@ -8,12 +8,14 @@ const ManageBookings = () => {
     const [selectedBooking, setSelectedBooking] = useState(null);
     const [totalPage, setTotalPage] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
+    const [sort, setSort] = useState("booking_date");
+    const [order, setOrder] = useState("desc");
     const decoratorModalRef = useRef();
     const limit = 10;
-    const { data: bookings = [], isLoading: isBookingLoadinf, refetch: bookingRefetch } = useQuery({
-        queryKey: ['bookings', currentPage],
+    const { data: bookings = [], isLoading: isBookingLoading, refetch: bookingRefetch } = useQuery({
+        queryKey: ['bookings', currentPage, sort, order],
         queryFn: async () => {
-            const result = await axiosSecure(`/bookings?limit=${limit}&skip=${currentPage * limit}&service_status=pending`);
+            const result = await axiosSecure(`/bookings?limit=${limit}&skip=${currentPage * limit}&sort=${sort}&order=${order}&service_status=pending`);
             const page = Math.ceil(result.data.total / limit);
             setTotalPage(page);
             return result.data.result;
@@ -26,6 +28,11 @@ const ManageBookings = () => {
             return result.data.result;
         }
     });
+    const handleSort = e => {
+        const sortText = e.target.value;
+        setSort(sortText.split("-")[0]);
+        setOrder(sortText.split("-")[1]);
+    }
     const openDecoratorRefModal = booking => {
         setSelectedBooking(booking);
         decoratorModalRef.current.showModal();
@@ -50,7 +57,16 @@ const ManageBookings = () => {
     }
     return (
         <div className="space-y-4">
-            <h2 className="text-4xl font-bold">Manage Bookings</h2>
+            <div className="flex gap-2 flex-wrap justify-between">
+                <h2 className="text-4xl font-bold">Manage Bookings</h2>
+                <select onChange={handleSort} className="select">
+                    <option value="" selected disabled>Sort By</option>
+                    <option value="booking_date-asc">Booking Date - Ascending</option>
+                    <option value="booking_date-desc">Booking Date - Descending</option>
+                    <option value="payment_status-asc">Payment Status - Ascending</option>
+                    <option value="payment_status-desc">Payment Status - Descending</option>
+                </select>
+            </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     <thead>
@@ -73,7 +89,7 @@ const ManageBookings = () => {
                             <td>{booking.email}</td>
                             <td>{booking.location}</td>
                             <td>{booking.service_name}</td>
-                            <td>{booking.cost}</td>
+                            <td>Tk. {booking.cost}</td>
                             <td>{new Date(booking.booking_date).toLocaleDateString()}</td>
                             <td>{booking.payment_status}</td>
                             <td>{booking.payment_status === "paid" && <button onClick={() => openDecoratorRefModal(booking)} className="btn btn-primary text-black">Find Decorators</button>}</td>
