@@ -21,6 +21,7 @@ import PaymentCancelled from "../pages/UserDashboard/PaymentCancelled";
 import PaymentHistory from "../pages/UserDashboard/PaymentHistory";
 import DecoratorRoute from "./DecoratorRoute";
 import AssignedServices from "../pages/DecoratorDashboard/AssignedServices";
+import DashboardHome from "../pages/DashboardHome/DashboardHome";
 
 export const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
             <DashboardLayout/>
         </PrivateRoute>,
         children: [
+            {
+                index: true,
+                Component: DashboardHome,
+            },
             // Admin routes
             {
                 path: "/dashboard/manage-decorators",
