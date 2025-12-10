@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import Loader from "../../components/shared/Loader";
 
 const ManageServices = () => {
     const [selectedService, setSelectedService] = useState(null);
@@ -76,9 +77,7 @@ const ManageServices = () => {
     }
 
     if (isLoading) {
-        return <div className="min-h-screen flex justify-center items-center">
-            <span className="loading loading-bars w-12"></span>
-        </div>;
+        return <Loader/>;
     }
     return (
         <div className="space-y-4">

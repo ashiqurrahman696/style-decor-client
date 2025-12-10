@@ -1,12 +1,11 @@
 import { Navigate } from 'react-router';
 import useRole from '../hooks/useRole';
+import Loader from '../components/shared/Loader';
 
 const AdminRoute = ({ children }) => {
   const [role, isRoleLoading] = useRole();
 
-  if (isRoleLoading) return <div className="min-h-screen flex justify-center items-center">
-    <span className="loading loading-bars w-12"></span>
-  </div>;
+  if (isRoleLoading) return <Loader/>;
   if (role === 'admin') return children;
   return <Navigate to='/' replace='true' />;
 }

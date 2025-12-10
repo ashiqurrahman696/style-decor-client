@@ -1,12 +1,11 @@
 import { Navigate } from 'react-router';
 import useRole from '../hooks/useRole';
+import Loader from '../components/shared/Loader';
 
 const DecoratorRoute = ({ children }) => {
     const [role, isRoleLoading] = useRole();
 
-    if (isRoleLoading) return <div className="min-h-screen flex justify-center items-center">
-        <span className="loading loading-bars w-12"></span>
-    </div>;
+    if (isRoleLoading) return <Loader/>;
     if (role === 'decorator') return children;
     return <Navigate to='/' replace='true' />;
 }

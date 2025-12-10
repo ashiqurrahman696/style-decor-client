@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import Loader from "../../components/shared/Loader";
 
 const ManageDecorators = () => {
     const {user} = useAuth();
@@ -34,9 +35,7 @@ const ManageDecorators = () => {
     }
 
     if (isLoading) {
-        return <div className="min-h-screen flex justify-center items-center">
-            <span className="loading loading-bars w-12"></span>
-        </div>;
+        return <Loader/>;
     }
     return (
         <div className="space-y-4">
