@@ -57,6 +57,7 @@ const ManageBookings = () => {
     }
     return (
         <div className="space-y-4">
+            <title>Manage Bookings</title>
             <div className="flex gap-2 flex-wrap justify-between">
                 <h2 className="text-4xl font-bold">Manage Bookings</h2>
                 <select onChange={handleSort} className="select">

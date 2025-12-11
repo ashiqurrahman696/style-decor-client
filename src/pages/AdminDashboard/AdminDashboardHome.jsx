@@ -19,6 +19,7 @@ const AdminDashboardHome = () => {
     }
     return (
         <div className="space-y-4 overflow-x-hidden">
+            <title>Admin Dashboard</title>
             <h2 className="text-4xl font-bold">Admin Dashboard</h2>
             <h3 className="text-3xl font-semibold">Service Demand Chart</h3>
             <BarChart

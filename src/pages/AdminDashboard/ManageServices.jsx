@@ -81,6 +81,7 @@ const ManageServices = () => {
     }
     return (
         <div className="space-y-4">
+            <title>Manage Services</title>
             <div className="flex justify-between items-center">
                 <h2 className="text-4xl font-bold">Manage Decoration Services</h2>
                 <Link to="/dashboard/add-service" className="btn btn-primary text-black"><FaPlus />Add Service</Link>

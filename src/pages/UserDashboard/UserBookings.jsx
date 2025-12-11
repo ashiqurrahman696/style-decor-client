@@ -79,6 +79,7 @@ const UserBookings = () => {
     }
     return (
         <div className="space-y-4">
+            <title>My Bookings</title>
             <h2 className="text-4xl font-bold">My Bookings</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">

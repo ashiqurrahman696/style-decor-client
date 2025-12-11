@@ -39,6 +39,7 @@ const ManageDecorators = () => {
     }
     return (
         <div className="space-y-4">
+            <title>Manage Decorators</title>
             <h2 className="text-4xl font-bold">Manage Decorators</h2>
             <div className="overflow-x-auto">
                 <table className="table">

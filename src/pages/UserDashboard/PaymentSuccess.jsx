@@ -16,6 +16,7 @@ const PaymentSuccess = () => {
     }, [sessionId, axiosSecure]);
     return (
         <div className="space-y-4 min-h-screen flex flex-col justify-center items-center text-center">
+            <title>Payment Successful</title>
             <FaCheckCircle size={100} className="text-green-600" />
             <h2 className="text-4xl font-bold">Payment Successful</h2>
             <p>Thank you for your purchase. Your order is being processed.</p>

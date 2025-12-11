@@ -36,6 +36,7 @@ const AddService = () => {
     }
     return (
         <div className="space-y-4">
+            <title>Add Service</title>
             <h2 className="text-4xl font-bold">Add Decoration Service</h2>
             <form onSubmit={handleSubmit(handleAddService)} className="grid md:grid-cols-2 gap-4">
                 <div>

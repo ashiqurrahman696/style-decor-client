@@ -14,6 +14,7 @@ const PaymentHistory = () => {
     });
     return (
         <div className="space-y-4">
+            <title>Payment History</title>
             <h2 className="text-4xl font-bold">Payment History</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">

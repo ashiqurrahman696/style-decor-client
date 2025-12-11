@@ -28,6 +28,7 @@ const AssignedServices = () => {
     }
     return (
         <div className="space-y-4">
+            <title>Assigned Services</title>
             <h2 className="text-4xl font-bold">Assigned Services</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">

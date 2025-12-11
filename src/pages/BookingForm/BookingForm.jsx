@@ -21,6 +21,7 @@ const BookingForm = () => {
     }
     return (
         <div className="p-4 max-w-4xl mx-auto">
+            <title>Book your service</title>
             <div className="card bg-base-200 border border-neutral-300">
                 <div className="card-body">
                     <h2 className="text-4xl font-semibold text-center mb-4">Book your service</h2>

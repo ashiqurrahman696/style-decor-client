@@ -47,6 +47,7 @@ const Login = () => {
     }
     return (
         <div className="p-4 min-h-screen flex justify-center items-center">
+            <title>Login</title>
             <div className="card bg-base-300 w-full max-w-sm">
                 <div className="card-body">
                     <h2 className="text-center font-semibold text-3xl">Login</h2>
