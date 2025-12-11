@@ -3,12 +3,14 @@ import { useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Login = () => {
-    const { user, signInUser, setUser } = useAuth();
+    const { user, signInUser, setUser, resetPassword } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const emailRef = useRef(null);
     const { register, handleSubmit, formState: { errors } } = useForm();
     useEffect(() => {
         if (user && user?.email) navigate(`${location.state ? location.state : "/"}`);
@@ -34,6 +36,15 @@ const Login = () => {
                 toast.error(error.code);
             });
     }
+    const handleResetPassword = () => {
+        resetPassword(email)
+            .then(() => {
+                toast.success("Password reset link sent to your email. Please check.");
+            })
+            .catch((error) => {
+                toast.error(error.code);
+            });
+    }
     return (
         <div className="p-4 min-h-screen flex justify-center items-center">
             <div className="card bg-base-300 w-full max-w-sm">
@@ -44,7 +55,7 @@ const Login = () => {
                         <input type="email" {...register("email", {
                             required: true,
                             pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-                        })} className="input w-full" placeholder="Email" />
+                        })} onChange={(e) => setEmail(e.target.value)} className="input w-full" placeholder="Email" />
                         {
                             errors.email?.type === "required" &&
                             <p className="text-red-500">Email is required</p>
@@ -61,7 +72,7 @@ const Login = () => {
                             errors.password?.type === "required" &&
                             <p className="text-red-500">Password is required</p>
                         }
-                        <div><a className="link link-hover">Forgot password?</a></div>
+                        <div><a onClick={handleResetPassword} className="link link-hover">Forgot password?</a></div>
                         <button className="btn btn-neutral mt-4">Login</button>
                     </form>
                 </div>
