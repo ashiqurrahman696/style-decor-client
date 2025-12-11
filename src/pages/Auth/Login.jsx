@@ -3,12 +3,16 @@ import { useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useEffect } from "react";
 
 const Login = () => {
-    const { signInUser, setUser } = useAuth();
+    const { user, signInUser, setUser } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    useEffect(() => {
+        if (user && user?.email) navigate(`${location.state ? location.state : "/"}`);
+    }, [navigate, user, location]);
     const handleLogin = data => {
         signInUser(data.email, data.password)
             .then(result => {
@@ -24,7 +28,7 @@ const Login = () => {
                             toast.success("Login successful");
                         }
                     });
-                navigate(location?.state || "/");
+                navigate(`${location.state ? location.state : "/"}`);
             })
             .catch(error => {
                 toast.error(error.code);

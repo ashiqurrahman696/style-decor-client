@@ -3,13 +3,16 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router";
+import { useEffect } from "react";
 
 const Register = () => {
     const { user, registerUser, setUser, updateUser, setLoading } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    useEffect(() => {
+        if (user && user?.email) navigate(`${location.state ? location.state : "/"}`);
+    }, [navigate, user, location]);
     const handleRegistration = data => {
         const profileImg = data.photo[0];
         registerUser(data.email, data.password)
@@ -41,7 +44,7 @@ const Register = () => {
                             .then(() => {
                                 setUser(result.user);
                                 setLoading(false);
-                                navigate(location?.state || "/");
+                                navigate(`${location.state ? location.state : "/"}`);
                             })
                             .catch(error => {
                                 toast.error(error.code);
