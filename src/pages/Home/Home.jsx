@@ -3,6 +3,7 @@ import Coverage from "../../components/Home/Coverage";
 import Hero from "../../components/Home/Hero";
 import Services from "../../components/Home/Services";
 import TopDecorators from "../../components/Home/TopDecorators";
+import Newsletter from "../../components/Home/Newsletter";
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <Services/>
             <TopDecorators/>
             <Coverage/>
+            <Newsletter/>
         </div>
     );
 };
