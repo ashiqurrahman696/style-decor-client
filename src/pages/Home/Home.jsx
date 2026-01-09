@@ -4,6 +4,7 @@ import Hero from "../../components/Home/Hero";
 import Services from "../../components/Home/Services";
 import TopDecorators from "../../components/Home/TopDecorators";
 import Newsletter from "../../components/Home/Newsletter";
+import Contact from "../../components/Home/Contact";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <TopDecorators/>
             <Coverage/>
             <Newsletter/>
+            <Contact/>
         </div>
     );
 };
