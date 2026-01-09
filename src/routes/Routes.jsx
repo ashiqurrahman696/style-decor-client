@@ -23,7 +23,6 @@ import DecoratorRoute from "./DecoratorRoute";
 import AssignedServices from "../pages/DecoratorDashboard/AssignedServices";
 import DashboardHome from "../pages/DashboardHome/DashboardHome";
 import AllServices from "../pages/AllServices/AllServices";
-import Profile from "../pages/UserDashboard/Profile";
 import UpdateProfile from "../pages/UserDashboard/UpdateProfile";
 
 export const router = createBrowserRouter([
@@ -125,7 +124,7 @@ export const router = createBrowserRouter([
                 </UserRoute>
             },
             {
-                path: "update-profile",
+                path: "/dashboard/update-profile",
                 element: <UserRoute>
                     <UpdateProfile/>
                 </UserRoute>,
