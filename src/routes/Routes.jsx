@@ -24,6 +24,7 @@ import AssignedServices from "../pages/DecoratorDashboard/AssignedServices";
 import DashboardHome from "../pages/DashboardHome/DashboardHome";
 import AllServices from "../pages/AllServices/AllServices";
 import UpdateProfile from "../pages/UserDashboard/UpdateProfile";
+import ContactPage from "../pages/ContactPage/ContactPage";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: "/contact",
+                Component: ContactPage
             },
             {
                 path: "/all-services",
