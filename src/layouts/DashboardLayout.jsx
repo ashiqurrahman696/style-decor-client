@@ -32,7 +32,7 @@ const DashboardLayout = () => {
                     <div className="px-4 flex justify-between items-center w-full">
                         <Link to="/" className="font-semibold">Style Decor</Link>
                         <div>
-                            {user ? <>
+                            {user && role === "user" && <>
                                 <div tabIndex={0} role="button" className="btn btn-ghost avatar tooltip tooltip-bottom" data-tip={user.displayName}>
                                     <Link to="/dashboard/user-profile">
                                         <img
@@ -41,10 +41,7 @@ const DashboardLayout = () => {
                                             src={user.photoURL} />
                                     </Link>
                                 </div>
-                                <button onClick={handleLogOut} className="btn btn-error">Logout</button>
-                            </> : <>
-                                <Link to="/login" className="btn btn-info">Login</Link>
-                                <Link to="/register" className="btn btn-success">Register</Link>
+                                <button onClick={handleLogOut} className="btn btn-primary text-black">Logout</button>
                             </>}
                         </div>
                     </div>
