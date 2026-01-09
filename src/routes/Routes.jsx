@@ -22,6 +22,7 @@ import PaymentHistory from "../pages/UserDashboard/PaymentHistory";
 import DecoratorRoute from "./DecoratorRoute";
 import AssignedServices from "../pages/DecoratorDashboard/AssignedServices";
 import DashboardHome from "../pages/DashboardHome/DashboardHome";
+import AllServices from "../pages/AllServices/AllServices";
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: "/all-services",
+                Component: AllServices
             },
             {
                 path: "/service/:id",
