@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth";
 
 const UserProfile = () => {
@@ -12,6 +13,7 @@ const UserProfile = () => {
                         <img src={user.photoURL} className="w-20" />
                         <h3 className="text-3xl font-semibold">{user.displayName}</h3>
                         <p><strong>Email:</strong> {user.email}</p>
+                        <Link to="/dashboard/update-profile" className="btn btn-primary text-black">Update Profile</Link>
                     </div>
                 </div>
             </div>
