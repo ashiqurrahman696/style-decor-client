@@ -25,6 +25,7 @@ import DashboardHome from "../pages/DashboardHome/DashboardHome";
 import AllServices from "../pages/AllServices/AllServices";
 import UpdateProfile from "../pages/UserDashboard/UpdateProfile";
 import ContactPage from "../pages/ContactPage/ContactPage";
+import AboutPage from "../pages/AboutPage/AboutPage";
 
 export const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: "/about",
+                Component: AboutPage
             },
             {
                 path: "/contact",
