@@ -10,7 +10,6 @@ const Home = () => {
     return (
         <div className="max-w-7xl mx-auto p-4 space-y-12">
             <Hero/>
-            <About/>
             <Services/>
             <TopDecorators/>
             <Coverage/>
