@@ -2,12 +2,12 @@ import { Link } from "react-router";
 
 const ServiceCard = ({service}) => {
     return (
-        <div className="card bg-base-200 border border-neutral-300">
-            <figure className="px-4 pt-4">
+        <div className="card bg-base-200 border border-neutral-300 overflow-hidden">
+            <figure>
                 <img
                     src={service.packageImgURL}
                     alt={service.service_name}
-                    className="rounded-xl w-full h-40 object-cover" />
+                    className="w-full h-40 object-cover" />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{service.service_name}</h2>
