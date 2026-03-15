@@ -1,7 +1,8 @@
 const DecoratorCard = ({decorator}) => {
     return (
         <div className="card bg-base-200 border border-neutral-300">
-            <div className="card-body">
+            <div className="card-body items-center">
+                <img src={decorator.photoURL} className="w-16" />
                 <h2 className="card-title">{decorator.displayName}</h2>
             </div>
         </div>
