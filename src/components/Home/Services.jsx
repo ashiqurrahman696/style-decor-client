@@ -8,7 +8,7 @@ const Services = () => {
         queryKey: ['serviceData'],
         queryFn: async () => {
             const result = await axios(`/services`);
-            return result.data.slice(0, 3);
+            return result.data.slice(0, 4);
         }
     });
     return (
