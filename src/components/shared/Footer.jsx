@@ -4,34 +4,40 @@ import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube } from "react-icons/fa6
 
 const Footer = () => {
     return (
-        <footer className="footer footer-horizontal footer-center bg-base-300 p-10">
-            <div>
-                <img src={logo} className="w-10" />
-                <h3 className="text-3xl font-semibold">Style Decor</h3>
-            </div>
-            <div>
-                <h3 className="text-3xl font-semibold">Get in touch</h3>
-                <p><strong>Address:</strong> Dhaka, Bangladesh</p>
-                <p><strong>Phone:</strong> +8801963836103</p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-                <Link to="https://facebook.com">
-                    <FaFacebookF size={20} />
-                </Link>
-                <Link to="https://x.com">
-                    <FaXTwitter size={20} />
-                </Link>
-                <Link to="https://instagram.com">
-                    <FaInstagram size={20} />
-                </Link>
-                <Link to="https://youtube.com">
-                    <FaYoutube size={20} />
-                </Link>
-            </div>
-            <div>
-                <p><strong>Business Working Hours:</strong> 9:00 am - 2:00 pm, 4:00 pm - 11:00 pm</p>
-                <p>&copy; {new Date().getFullYear()} All rights reserved by Style Decor</p>
-            </div>
+        <footer className="footer md:grid-cols-3 bg-base-200 text-base-content p-10">
+            <aside>
+                <img src={logo} alt="StyleDecor Logo" className="w-24" />
+                <h2 className="text-3xl font-bold">
+                    Style Decor Ltd.
+                </h2>
+                <p>
+                    Your trusted partner for all your interior design needs.
+                </p>
+            </aside>
+            <nav>
+                <h6 className="footer-title">Quick Links</h6>
+                <Link to="/" className="link link-hover">Home</Link>
+                <Link to="/about" className="link link-hover">About</Link>
+                <Link to="/all-services" className="link link-hover">All Services</Link>
+                <Link to="/contact" className="link link-hover">Contact</Link>
+            </nav>
+            <nav>
+                <h6 className="footer-title">Social</h6>
+                <div className="grid grid-flow-col gap-4">
+                    <a href="https://facebook.com/StyleDecor" target="_blank">
+                        <FaFacebookF size={24} />
+                    </a>
+                    <a href="https://x.com/StyleDecor" target="_blank">
+                        <FaXTwitter size={24} />
+                    </a>
+                    <a href="https://instagram.com/StyleDecor" target="_blank">
+                        <FaInstagram size={24} />
+                    </a>
+                    <a href="https://youtube.com/@StyleDecor" target="_blank">
+                        <FaYoutube size={24} />
+                    </a>
+                </div>
+            </nav>
         </footer>
     );
 };
