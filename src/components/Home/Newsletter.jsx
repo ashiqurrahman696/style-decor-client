@@ -1,7 +1,7 @@
 const Newsletter = () => {
     return (
         <div>
-            <div className="card bg-[url(https://i.ibb.co.com/zVzQmgJR/La-Importancia-de-la-Decoracion-en-un-Evento-Corporativo.jpg)] bg-cover bg-center">
+            <div className="card bg-[url(https://i.ibb.co.com/zVzQmgJR/La-Importancia-de-la-Decoracion-en-un-Evento-Corporativo.jpg)] bg-cover bg-center overflow-hidden">
                 <div className="bg-black/40 inset-0">
                     <div className="card-body space-y-5 items-center py-20 text-white">
                         <h1 className="text-center font-semibold text-4xl">Subscribe to our Newsletter</h1>
