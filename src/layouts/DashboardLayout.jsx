@@ -41,6 +41,8 @@ const DashboardLayout = () => {
                                             src={user.photoURL} />
                                     </Link>
                                 </div>
+                            </>}
+                            {user  && <>
                                 <button onClick={handleLogOut} className="btn btn-primary text-black">Logout</button>
                             </>}
                         </div>
