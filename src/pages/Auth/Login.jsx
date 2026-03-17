@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+import GoogleLogin from "../../components/auth/GoogleLogin";
 
 const Login = () => {
     const { user, signInUser, setUser, resetPassword } = useAuth();
@@ -76,6 +77,7 @@ const Login = () => {
                         <div><a onClick={handleResetPassword} className="link link-hover">Forgot password?</a></div>
                         <button className="btn btn-neutral mt-4">Login</button>
                     </form>
+                    <GoogleLogin/>
                 </div>
             </div>
         </div>

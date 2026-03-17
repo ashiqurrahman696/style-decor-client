@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router";
 import { useEffect } from "react";
+import GoogleLogin from "../../components/auth/GoogleLogin";
 
 const Register = () => {
     const { user, registerUser, setUser, updateUser, setLoading } = useAuth();
@@ -109,6 +110,7 @@ const Register = () => {
                         }
                         <button className="btn btn-neutral mt-4">Register</button>
                     </form>
+                    <GoogleLogin/>
                 </div>
             </div>
         </div>
