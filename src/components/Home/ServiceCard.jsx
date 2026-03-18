@@ -11,7 +11,8 @@ const ServiceCard = ({service}) => {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{service.service_name}</h2>
-                <p>Tk. {service.cost}</p>
+                <p><strong>Category:</strong> <span className="capitalize">{service.service_category}</span></p>
+                <p>Tk. {service.cost} {service.unit}</p>
                 <p>{service.description}</p>
                 <div className="card-actions">
                     <Link to={`/service/${service._id}`} className="btn btn-primary text-black">View Details</Link>
