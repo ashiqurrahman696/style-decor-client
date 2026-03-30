@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "user_email": "sara.jones@example.com",
+    "userName": "Sara Jones",
+    "delivery_email": "sara.jones@example.com",
+    "ratings": 5.0,
+    "review": "Studio consultation was clear and super helpful. The team suggested a stunning palette and the booking flow was smooth. Highly recommend for first-time decorators.",
+    "parcel_id": "STU-1001",
+    "pick_up_email": "sara.jones@example.com",
+    "user_photoURL": "https://randomuser.me/api/portraits/women/68.jpg",
+    "date": "2025-12-04"
+  },
+  {
+    "id": 2,
+    "user_email": "mohammed.salim@example.com",
+    "userName": "Mohammed Salim",
+    "delivery_email": "mohammed.salim@example.com",
+    "ratings": 4.8,
+    "review": "On-site ceremony setup arrived on time. Decorators were professional and handled last-minute changes without issue. Payment and status tracking worked perfectly.",
+    "parcel_id": "ONS-2012",
+    "pick_up_email": "mohammed.salim@example.com",
+    "user_photoURL": "https://randomuser.me/api/portraits/men/46.jpg",
+    "date": "2025-11-21"
+  },
+  {
+    "id": 3,
+    "user_email": "anita_liu@example.com",
+    "userName": "Anita Liu",
+    "delivery_email": "anita_liu@example.com",
+    "ratings": 4.6,
+    "review": "Great package selection with clear pricing. I liked that I could check availability instantly and choose an evening slot. Decor team made our living room look like magazine-level.",
+    "parcel_id": "HOM-3075",
+    "pick_up_email": "anita_liu@example.com",
+    "user_photoURL": "https://randomuser.me/api/portraits/women/29.jpg",
+    "date": "2026-01-12"
+  },
+  {
+    "id": 4,
+    "user_email": "david.brown@example.com",
+    "userName": "David Brown",
+    "delivery_email": "david.brown@example.com",
+    "ratings": 4.9,
+    "review": "Booking steps for on-site service were intuitive. I loved tracking progress in real time after payment. Decorators were friendly and set everything up as promised.",
+    "parcel_id": "CER-4050",
+    "pick_up_email": "david.brown@example.com",
+    "user_photoURL": "https://randomuser.me/api/portraits/men/77.jpg",
+    "date": "2026-02-08"
+  },
+  {
+    "id": 5,
+    "user_email": "nezha_ali@example.com",
+    "userName": "Nezha Ali",
+    "delivery_email": "nezha_ali@example.com",
+    "ratings": 4.7,
+    "review": "Excellent UX for selecting service mode and package. I booked a hybrid consultation and on-site service with secure payment; status updates gave peace of mind.",
+    "parcel_id": "HYB-5023",
+    "pick_up_email": "nezha_ali@example.com",
+    "user_photoURL": "https://randomuser.me/api/portraits/women/12.jpg",
+    "date": "2026-03-04"
+  },
+  {
+    "id": 6,
+    "user_email": "lisa.wong@example.com",
+    "userName": "Lisa Wong",
+    "delivery_email": "lisa.wong@example.com",
+    "ratings": 4.8,
+    "review": "The team was responsive and delivered beyond my expectations. The attention to detail and creative approach made all the difference in our event.",
+    "parcel_id": "CER-6089",
+    "pick_up_email": "lisa.wong@example.com",
+    "user_photoURL": "https://randomuser.me/api/portraits/women/45.jpg",
+    "date": "2026-04-15"
+  },
+  {
+    "id": 7,
+    "user_email": "john.doe@example.com",
+    "userName": "John Doe",
+    "delivery_email": "john.doe@example.com",
+    "ratings": 4.5,
+    "review": "Great service overall. The decorators were professional and the quality of work exceeded my expectations.",
+    "parcel_id": "CER-7012",
+    "pick_up_email": "john.doe@example.com",
+    "user_photoURL": "https://randomuser.me/api/portraits/men/22.jpg",
+    "date": "2026-05-20"
+  },
+  {
+    "id": 8,
+    "user_email": "jane.smith@example.com",
+    "userName": "Jane Smith",
+    "delivery_email": "jane.smith@example.com",
+    "ratings": 4.9,
+    "review": "Outstanding service! The decorators transformed our space into something magical. Will definitely use their services again.",
+    "parcel_id": "CER-8045",
+    "pick_up_email": "jane.smith@example.com",
+    "user_photoURL": "https://randomuser.me/api/portraits/women/33.jpg",
+    "date": "2026-06-10"
+  },
+  {
+    "id": 9,
+    "user_email": "ahmed.khan@example.com",
+    "userName": "Ahmed Khan",
+    "delivery_email": "ahmed.khan@example.com",
+    "ratings": 4.7,
+    "review": "Excellent service and attention to detail. The team made our event look stunning!",
+    "parcel_id": "CER-9078",
+    "pick_up_email": "ahmed.khan@example.com",
+    "user_photoURL": "https://randomuser.me/api/portraits/men/55.jpg",
+    "date": "2026-07-15"
+  },
+  {
+    "id": 10,
+    "user_email": "lisa.white@example.com",
+    "userName": "Lisa White",
+    "delivery_email": "lisa.white@example.com",
+    "ratings": 4.8,
+    "review": "Fantastic service! The decorators were incredibly talented and brought our vision to life.",
+    "parcel_id": "CER-1001",
+    "pick_up_email": "lisa.white@example.com",
+    "user_photoURL": "https://randomuser.me/api/portraits/women/67.jpg",
+    "date": "2026-08-20"
+  }
+]
