@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "question": "What is StyleDecor?",
+        "answer": "StyleDecor is a modern appointment management system for a local decoration company that specializes in providing both in-studio consultations and on-site decoration services for homes and ceremonies."
+    },
+    {
+        "id": 2,
+        "question": "What services does StyleDecor offer?",
+        "answer": "StyleDecor offers decoration services including in-studio consultations where you can discuss your needs with our decorators, and on-site decoration services for homes and ceremonies. We help with various decoration packages tailored to your requirements."
+    },
+    {
+        "id": 3,
+        "question": "How do I book an appointment?",
+        "answer": "To book an appointment, explore our available decoration packages on the website, check decorator availability, select your preferred date and time, choose between in-studio consultation or on-site service, and complete the booking process with payment."
+    },
+    {
+        "id": 4,
+        "question": "What's the difference between in-studio consultation and on-site service?",
+        "answer": "In-studio consultation involves visiting our studio to discuss and plan your decoration needs with our experts. On-site service means our decorators come directly to your location (home or ceremony venue) to provide the decoration services."
+    },
+    {
+        "id": 5,
+        "question": "How do I check decorator availability?",
+        "answer": "You can check decorator availability through our online system when booking an appointment. Select your preferred date and time, and the system will show available decorators and time slots."
+    },
+    {
+        "id": 6,
+        "question": "What payment methods are accepted?",
+        "answer": "We accept various payment methods including credit/debit cards, digital wallets, and online banking. All payments are processed securely through our platform."
+    },
+    {
+        "id": 7,
+        "question": "Can I cancel or reschedule my booking?",
+        "answer": "Yes, you can cancel or reschedule your booking through your dashboard. Please note that cancellation policies may apply depending on the timing and type of service. Contact us for assistance with changes."
+    },
+    {
+        "id": 8,
+        "question": "How do I track my service status?",
+        "answer": "You can track your service status through your user dashboard. Log in to your account to view the current status of your bookings, from confirmation to completion."
+    },
+    {
+        "id": 9,
+        "question": "Are there decoration packages available?",
+        "answer": "Yes, we offer various decoration packages for different occasions and needs. You can explore our packages on the website, which include options for homes, weddings, parties, and other ceremonies."
+    },
+    {
+        "id": 10,
+        "question": "What should I prepare for my appointment?",
+        "answer": "For in-studio consultations, bring any reference images or ideas you have. For on-site services, ensure access to the location and provide any specific requirements or preferences in advance. Have your payment method ready for booking."
+    }
+]

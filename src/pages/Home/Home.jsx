@@ -6,6 +6,7 @@ import TopDecorators from "../../components/Home/TopDecorators";
 import Newsletter from "../../components/Home/Newsletter";
 import Contact from "../../components/Home/Contact";
 import Reviews from "../../components/Home/Reviews";
+import FAQ from "../../components/Home/FAQ";
 
 const Home = () => {
     return (
@@ -13,10 +14,11 @@ const Home = () => {
             <Hero/>
             <Services/>
             <TopDecorators/>
-            <Reviews />
+            <Reviews/>
             <Coverage/>
             <Newsletter/>
             <Contact/>
+            <FAQ/>
         </div>
     );
 };
